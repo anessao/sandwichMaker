@@ -1,7 +1,7 @@
 var SandwichMaker = (function(maker){
 
   maker.addMeat = function(x) {
-      //LOOP TO DETERMINE ITEMS CHECKED AND THEIR VALUES
+    //LOOP TO DETERMINE ITEMS CHECKED AND THEIR VALUES
     var meatsChosen = [];  
     for (var i = 0; i < x.length; i++){
       if (x[i].checked === true){

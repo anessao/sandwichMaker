@@ -7,15 +7,13 @@
 		<h1>Make Your Sandwich</h1>
 
 		<!-- ////////// BREAD OPTIONS \\\\\\\\\\ -->
-		<legend for="bread">Chose your bread:</legend>
-		<select name="bread" id="bread">
-			<option value="white">
-				<span>White Bread</span>
-			</option>
-			<option value="wheat">
-				<span>Wheat Bread</span>
-			</option>
-		</select>
+		<div id="breads">
+			<legend for="breads">Chose your meats:</legend>
+			<input type="radio" name="breads"  id="white" value="White">
+			<span>White</span>
+			<input type="radio" name="breads" id="wheat" value="Wheat">
+			<span>Wheat</span>
+		</div>
 
 		<!-- ////////// MEAT OPTIONS \\\\\\\\\\ -->
 		<div id="meats">
@@ -42,43 +40,58 @@
 			<input type="checkbox" name="cheese" id="cheese" value="pepperjack">
 			<span>Pepper Jack</span>
 		</div>
+
 		<!-- ////////// CONDIMENTS OPTIONS \\\\\\\\\\ -->
-		<legend for="condiments">Chose your condiments:</legend>
-		<input type="checkbox" name="condiments" id="condiments" value="ketchup">
-		<span>Ketchup</span>
-		<input type="checkbox" name="condiments" id="condiments" value="mustard">
-		<span>Mustard</span>
-		<input type="checkbox" name="condiments" id="condiments" value="mayo">
-		<span>Mayo</span>
-		<input type="checkbox" name="condiments" id="condiments" value="aioli">
-		<span>Aioli</span>
+		<div id="condiments">
+			<legend for="condiments">Chose your condiments:</legend>
+			<input type="checkbox" name="condiments" id="condiments" value="ketchup">
+			<span>Ketchup</span>
+			<input type="checkbox" name="condiments" id="condiments" value="mustard">
+			<span>Mustard</span>
+			<input type="checkbox" name="condiments" id="condiments" value="mayo">
+			<span>Mayo</span>
+			<input type="checkbox" name="condiments" id="condiments" value="aioli">
+			<span>Aioli</span>
+		</div>
 
 		<!-- ////////// VEGGIES OPTIONS \\\\\\\\\\ -->
-		<legend for="veggies">Chose your veggies:</legend>
-		<input type="checkbox" name="veggies" id="veggies" value="lettuce">
-		<span>Lettuce</span>
-		<input type="checkbox" name="veggies" id="veggies" value="spinach">
-		<span>Spinach</span>
-		<input type="checkbox" name="veggies" id="veggies" value="pickles">
-		<span>Pickles</span>
-		<input type="checkbox" name="veggies" id="veggies" value="onions">
-		<span>Onions</span>
+		<div id="veggies">
+			<legend for="veggies">Chose your veggies:</legend>
+			<input type="checkbox" name="veggies" id="veggies" value="lettuce">
+			<span>Lettuce</span>
+			<input type="checkbox" name="veggies" id="veggies" value="spinach">
+			<span>Spinach</span>
+			<input type="checkbox" name="veggies" id="veggies" value="pickles">
+			<span>Pickles</span>
+			<input type="checkbox" name="veggies" id="veggies" value="onions">
+			<span>Onions</span>
+		</div>
 
-		<h2>Your Final order is:</h2>
-		<div id="sandwich"></div>
-		<h2>Your order total is:</h2>
+
+<!-- Your ordered a 'turkey bacon ham' sandwich on 'white' bread with 'veggies' -->
+		<div id="sandwich">
+			<h2>Your order contains:</h2>
+			<h4 id="meatSandwich"></h4>
+			<h4 id="breadSandwich"></h4>
+			<h4 id="cheeseSandwich"></h4>
+			<h4 id="condimentsSandwich"></h4>
+			<h4 id="veggiesSandwich"></h4>
+		</div>
+
+		<h4>Your order total is:</h2>
 		<div id="total"></div>
 		
 		<script type="text/javascript" src="javascripts/SandwichMaker.js"></script>
 		<script type="text/javascript" src="javascripts/Meat.js"></script>
 		<script type="text/javascript" src="javascripts/Cheese.js"></script>
+		<script type="text/javascript" src="javascripts/Veggies.js"></script>
+		<script type="text/javascript" src="javascripts/Condiments.js"></script>
+		<script type="text/javascript" src="javascripts/Bread.js"></script>
 		<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
 
 
 	</body>
 </html>
-
-
 
 
 
