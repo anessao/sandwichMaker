@@ -31,16 +31,17 @@
 		</div>
 
 		<!-- ////////// CHEESE OPTIONS \\\\\\\\\\ -->
-		<legend for="cheese">Chose your cheese:</legend>
-		<input type="checkbox" name="cheese" id="cheese" value="american">
-		<span>American</span>
-		<input type="checkbox" name="cheese" id="cheese" value="swiss">
-		<span>Swiss</span>
-		<input type="checkbox" name="cheese" id="cheese" value="colbyjack">
-		<span>Colby Jack</span>
-		<input type="checkbox" name="cheese" id="cheese" value="pepperjack">
-		<span>Pepper Jack</span>
-
+		<div id="cheese">
+			<legend for="cheese">Chose your cheese:</legend>
+			<input type="checkbox" name="cheese" id="cheese" value="american">
+			<span>American</span>
+			<input type="checkbox" name="cheese" id="cheese" value="swiss">
+			<span>Swiss</span>
+			<input type="checkbox" name="cheese" id="cheese" value="colbyjack">
+			<span>Colby Jack</span>
+			<input type="checkbox" name="cheese" id="cheese" value="pepperjack">
+			<span>Pepper Jack</span>
+		</div>
 		<!-- ////////// CONDIMENTS OPTIONS \\\\\\\\\\ -->
 		<legend for="condiments">Chose your condiments:</legend>
 		<input type="checkbox" name="condiments" id="condiments" value="ketchup">
@@ -68,8 +69,9 @@
 		<h2>Your order total is:</h2>
 		<div id="total"></div>
 		
-		
+		<script type="text/javascript" src="javascripts/SandwichMaker.js"></script>
 		<script type="text/javascript" src="javascripts/Meat.js"></script>
+		<script type="text/javascript" src="javascripts/Cheese.js"></script>
 		<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
 
 
