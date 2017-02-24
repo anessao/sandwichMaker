@@ -1,149 +1,80 @@
+var checkboxes = document.getElementById("menuItems");
+
+checkboxes.addEventListener("change", function (e){
+	
 //***************************************************
 //DOM LOCATION VARIABLES FOR PLACEMENT AND INFO GRABS
 //***************************************************
-
-var meatChooser = document.getElementById("meats");
-var cheeseChooser = document.getElementById("cheese");
-var condimentsChooser = document.getElementById("condiments");
-var veggiesChooser = document.getElementById("veggies");
-var breadChooser = document.getElementById("breads");
-var checkboxes = document.getElementById("menuItems");
-
-var totalPrice = document.getElementById("total");
-
-//STRING BUILDER VARIABLES
-var breadSandwich = document.getElementById("breadSandwich");
-var meatSandwich = document.getElementById("meatSandwich");
-var cheeseSandwich = document.getElementById("cheeseSandwich");
-var veggiesSandwich = document.getElementById("veggiesSandwich");
-var condimentsSandwich = document.getElementById("condimentsSandwich");
-
-//***************************************************
-//EVENT LISTENER THAT FIRES OFF ALL SUBSEQUENT FUNCTIONS
-//***************************************************
-
-// meatChooser.addEventListener("change", function(e){
-// 	//YOUR SANDWICH STRING
-
-// 	var yourSandwich = ["Meats chosen: "];
-
-// 	//GET OBJECT OF CHECKLIST FROM BROWSER TO PASS THROUGH ALL FUNCTIONS
-// 	var nodeValues = document.getElementById('meats').childNodes;
-	
-// 	//GET MEAT ITEM LIST
-// 	var meatItems = SandwichMaker.addMeat(nodeValues);
-	
-// 	//GET MEAT PRICE LIST
-// 	totalPrice.innerHTML = SandwichMaker.getMeatPrices(meatItems);
-	
-// 	//SET INNERHTML OF EACH ITEMS
-// 	yourSandwich.push(meatItems);
-// 	meatSandwich.innerHTML = yourSandwich.toString();
-
-// });
-
-
-// cheeseChooser.addEventListener("change", function(e){
-// 	var yourSandwich = ["Cheese chosen: "];
-// 	var nodeValues = document.getElementById('cheese').childNodes;
-// 	var cheeseItems = SandwichMaker.addCheese(nodeValues);
-// 	var cheesePrices = SandwichMaker.getCheesePrices(cheeseItems);
-
-// 	yourSandwich.push(cheeseItems);
-// 	cheeseSandwich.innerHTML = yourSandwich;
-
-// });
-
-// condimentsChooser.addEventListener("change", function(e){
-// 	var yourSandwich = ["Condiments chosen: "];
-// 	var nodeValues = document.getElementById('condiments').childNodes;
-
-// 	var condimentsItems = SandwichMaker.addCondiments(nodeValues);
-// 	var condimentsPrices = SandwichMaker.getCondimentsPrices(condimentsItems);
-
-// 	console.log(condimentsItems);
-// 	console.log(condimentsPrices);
-// 	console.log(SandwichMaker.addTopping(condimentsPrices));
-
-// 	//CREATE INNERHTML STRING:
-// 	yourSandwich.push(condimentsItems.toString());
-// 	condimentsSandwich.innerHTML = yourSandwich;
-// });
-
-// veggiesChooser.addEventListener("change", function(e){
-// 	var yourSandwich = ["Veggies chosen: "];
-// 	var nodeValues = document.getElementById('veggies').childNodes;
-
-// 	var veggiesItems = SandwichMaker.addVeggies(nodeValues);
-// 	var veggiesPrices = SandwichMaker.getVeggiesPrices(veggiesItems);
-
-// 	console.log(veggiesItems);
-// 	console.log(veggiesPrices);
-// 	console.log(SandwichMaker.addTopping(veggiesPrices));
-
-// 	//CREATE INNERHTML STRING:
-// 	yourSandwich.push(veggiesItems.toString());
-// 	veggiesSandwich.innerHTML = yourSandwich;
-
-// });
-
-// breadChooser.addEventListener("change", function (e){
-// 	var yourSandwich = ["Bread chosen: "];
-
-// 	var nodeValues = document.getElementById('breads').childNodes;
-
-// 	var breadItems = SandwichMaker.addBread(nodeValues);
-// 	var breadPrices = SandwichMaker.getBreadPrices(breadItems);
-
-// 	//CREATE INNERHTML STRING:
-// 	yourSandwich.push(breadItems.toString());
-// 	breadSandwich.innerHTML = yourSandwich;
-
-// 	//INNERHTML ACTIONS
-// 	console.log(breadPrices);
-// 	console.log(SandwichMaker.addTopping(breadPrices));
-
-// });
-
-checkboxes.addEventListener("change", function (e){
+	var totalPrice = document.getElementById("total");
+	var yourSandwich = document.getElementById("sandwich");
+	var toppingsString = document.getElementById("toppings");
 	var toppingInputs = document.getElementsByTagName("input");
+	
+//***************************************************
+//DOM INFO GRABS FOR CHECKBOX VARIABLES
+//***************************************************
+	var nodeMeatValues = document.getElementById('meats').childNodes;
+	var nodeCheeseValues = document.getElementById('cheese').childNodes;
+	var nodeCondimentsValues = document.getElementById('condiments').childNodes;
+	var nodeVeggiesValues = document.getElementById('veggies').childNodes;
+	var nodeBreadsValues = document.getElementById('breads').childNodes;
+
+	//FUNCTION TO CALCULATE TOTAL PRICE
 	var allPrices = [];
-	console.log(toppingInputs.name);
+	function getTotalPrices (x) {
+		if (x > 0) {
+			allPrices.push(x);
+		} else {
+			allPrices.push(0);
+		};
+		return allPrices;
+	}
+//***************************************************
+//FOR LOOP >> USES CHECKBOX STATUS TO CALCULATE WHICH
+//METHODS TO USE TO GET WHICH PRICES FOR FINAL VARIABLES
+//TO EXPORT TO THE DOM >> DYNAMIC USE OF JS IIFE FUNCTIONS
+//***************************************************
+
 	for (var y = 0; y < toppingInputs.length; y++) {
 		if (toppingInputs[y].checked === true) {
 			if (toppingInputs[y].name === "meats") {
-				var nodeMeatValues = document.getElementById('meats').childNodes;
-				var meatItems = SandwichMaker.addMeat(nodeMeatValues);
-				var meatPrices = SandwichMaker.getMeatPrices(meatItems);
-				allPrices.push(meatPrices);
+				var meatItems = SandwichMaker.addMeat(nodeMeatValues); //GRABS VALUES OF ITEMS
+				var meatPrices = SandwichMaker.getMeatPrices(meatItems); //GRABS ALL PRICES FROM RESPECTIVE JS FILE
+				var finalMeat = SandwichMaker.addTopping(meatPrices); //CALCULATES THE TOTAL GROUP PRICE
+				
 			} if (toppingInputs[y].name === "cheese") {
-				var nodeCheeseValues = document.getElementById('cheese').childNodes;
 				var cheeseItems = SandwichMaker.addCheese(nodeCheeseValues);
 				var cheesePrices = SandwichMaker.getCheesePrices(cheeseItems);
+				var finalCheese = SandwichMaker.addTopping(cheesePrices);
+
 			} if (toppingInputs[y].name === "condiments") {
-				var nodeCondimentsValues = document.getElementById('condiments').childNodes;
 				var condimentsItems = SandwichMaker.addCondiments(nodeCondimentsValues);
 				var condimentsPrices = SandwichMaker.getCondimentsPrices(condimentsItems);
+				var finalCondiments = SandwichMaker.addTopping(condimentsPrices);
+			
 			} if (toppingInputs[y].name === "veggies") {
-				var nodeVeggiesValues = document.getElementById('veggies').childNodes;
 				var veggiesItems = SandwichMaker.addVeggies(nodeVeggiesValues);
 				var veggiesPrices = SandwichMaker.getVeggiesPrices(veggiesItems);
+				var finalVeggies = SandwichMaker.addTopping(veggiesPrices);
+				
 			} if (toppingInputs[y].name === "breads") {
-				var nodeBreadsValues = document.getElementById('breads').childNodes;
 				var breadsItems = SandwichMaker.addBread(nodeBreadsValues);
 				var breadPrices = SandwichMaker.getBreadPrices(breadsItems);
-			} else {
-				console.log("nada");
+				var finalBreads = SandwichMaker.addTopping(breadPrices);				
 			}
 		}
 	}
-	allPrices = [meatPrices, cheesePrices, condimentsPrices, veggiesPrices, breadPrices];
-	totalPrice.innerHTML = allPrices.reduce((x, y) => x+y, 0);
+	//CREATES ARRAY FOR PREPPING ITEM PRICES FOR DOM PLACEMENT
+	getTotalPrices(finalMeat); 
+	getTotalPrices(finalCheese);
+	getTotalPrices(finalCondiments);
+	getTotalPrices(finalVeggies);
+	getTotalPrices(finalBreads);
 
-	// if (fullPrices === undefined) {
-	// totalPrice.innerHTML = "$0.00";	
-	// } else {
-	// totalPrice.innerHTML = meatPrices + " " + cheesePrices + " " + condimentsPrices + " " + veggiesPrices + " " + breadPrices;
+	//DOM PLACEMENTS
+	totalPrice.innerHTML = SandwichMaker.addTopping(allPrices);
+	yourSandwich.innerHTML = '<h4>Your sandwich comes on ' + breadsItems + ' bread and the following toppings:</h4>'
+	toppingsString.innerHTML = ["Meats: " + meatItems + " <br>" + "Cheese: " + cheeseItems + " <br>" + "Condiments: " + condimentsItems + " <br>" + "Veggies: "  + veggiesItems].toString().replace(/undefined/g, '').replace(/,/g, ' ');
 	
 });
 

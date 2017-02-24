@@ -4,7 +4,7 @@ var SandwichMaker = (function(maker){
       //LOOP TO DETERMINE ITEMS CHECKED AND THEIR VALUES
     var breadChosen = [];  
     for (var i = 0; i < x.length; i++){
-      if (x[i].checked === true){
+      if (x[i].checked === true && x[i].name === "breads"){
         breadChosen.push(x[i].defaultValue);
       }
     }

@@ -4,7 +4,7 @@ var SandwichMaker = (function(maker){
       //LOOP TO DETERMINE ITEMS CHECKED AND THEIR VALUES
     var condimentsChosen = [];  
     for (var i = 0; i < x.length; i++){
-      if (x[i].checked === true){
+      if (x[i].checked === true && x[i].name === "condiments"){
         condimentsChosen.push(x[i].defaultValue);
       }
     }
@@ -25,7 +25,7 @@ var SandwichMaker = (function(maker){
       keyValue = x[j];
       condimentsChosenPrices.push(condimentsPrices[keyValue]);
     }
-    return condimentsChosenPrices.reduce((x, y) => x+y, 0);
+    return condimentsChosenPrices;
   };
 
   return maker;
