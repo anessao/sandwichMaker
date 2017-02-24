@@ -25,7 +25,7 @@ var SandwichMaker = (function(maker){
       keyValue = x[j];
       veggiesChosenPrices.push(veggiesPrices[keyValue]);
     }
-    return veggiesChosenPrices;
+    return veggiesChosenPrices.reduce((x, y) => x+y, 0);
   };
 
   return maker;

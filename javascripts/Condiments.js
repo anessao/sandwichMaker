@@ -13,10 +13,10 @@ var SandwichMaker = (function(maker){
 
   maker.getCondimentsPrices = function(x) {
     var condimentsPrices = {
-      ketchup: .25,
-      mustard: .10,
-      mayo: .30,
-      aioli: .60
+      ketchup: 1.25,
+      mustard: 1.10,
+      mayo: 1.30,
+      aioli: 1.60
     };
     
     var condimentsChosenPrices = [];
@@ -25,7 +25,7 @@ var SandwichMaker = (function(maker){
       keyValue = x[j];
       condimentsChosenPrices.push(condimentsPrices[keyValue]);
     }
-    return condimentsChosenPrices;
+    return condimentsChosenPrices.reduce((x, y) => x+y, 0);
   };
 
   return maker;
