@@ -1,7 +1,6 @@
 var checkboxes = document.getElementById("menuItems");
-
 checkboxes.addEventListener("change", function (e){
-	
+
 //***************************************************
 //DOM LOCATION VARIABLES FOR PLACEMENT AND INFO GRABS
 //***************************************************
@@ -72,7 +71,7 @@ checkboxes.addEventListener("change", function (e){
 	getTotalPrices(finalBreads);
 
 	//DOM PLACEMENTS
-	totalPrice.innerHTML = SandwichMaker.addTopping(allPrices);
+	totalPrice.innerHTML = "$" + SandwichMaker.addTopping(allPrices);
 	yourSandwich.innerHTML = '<h4>Your sandwich comes on ' + breadsItems + ' bread and the following toppings:</h4>'
 	toppingsString.innerHTML = ["Meats: " + meatItems + " <br>" + "Cheese: " + cheeseItems + " <br>" + "Condiments: " + condimentsItems + " <br>" + "Veggies: "  + veggiesItems].toString().replace(/undefined/g, '').replace(/,/g, ' ');
 	
